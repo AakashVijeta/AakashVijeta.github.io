@@ -15,6 +15,15 @@ const getActiveScrollable = () => {
   return activeSection.querySelector('.section-scroll');
 };
 
+const canScrollableMove = (scrollable, deltaY) => {
+  if (!scrollable) return false;
+  const { scrollTop, scrollHeight, clientHeight } = scrollable;
+  if (scrollHeight <= clientHeight + 1) return false;
+  if (deltaY > 0) return scrollTop + clientHeight < scrollHeight - 2;
+  if (deltaY < 0) return scrollTop > 2;
+  return false;
+};
+
 export function useSectionManager({ activeIndex, isTransitioning, advance }) {
   const wheelAccRef = useRef(0);
   const wheelLastFiredRef = useRef(0);
@@ -23,6 +32,11 @@ export function useSectionManager({ activeIndex, isTransitioning, advance }) {
   useEffect(() => {
     const onWheel = (e) => {
       if (isTransitioning) return;
+      const scrollable = getActiveScrollable();
+      if (e.target instanceof Node && scrollable?.contains(e.target) && canScrollableMove(scrollable, e.deltaY)) {
+        wheelAccRef.current = 0;
+        return;
+      }
       if (Date.now() - wheelLastFiredRef.current < WHEEL_COOLDOWN_MS) {
         wheelAccRef.current = 0; // drain momentum during cooldown so it can't retrigger immediately after
         return;

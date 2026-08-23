@@ -59,7 +59,7 @@ export default function AboutSection({ isActive }) {
   return (
     <section
       ref={rootRef}
-      className="section section-stripe about-profiler section-scroll"
+      className="section section-stripe about-profiler"
       style={{
         flexDirection: 'column',
         alignItems: 'stretch',
@@ -78,7 +78,7 @@ export default function AboutSection({ isActive }) {
         <hr className="profiler-rule" />
       </header>
 
-      <div className="profiler-main-scroll custom-scrollbar">
+      <div className="profiler-main-scroll custom-scrollbar section-scroll">
         <div className="profiler-container">
 
         {/* LEFT — IDENTITY */}
@@ -199,18 +199,7 @@ export default function AboutSection({ isActive }) {
               </div>
             </div>
 
-            <div className="threat-level cap-inner-threat">
-              <div className="alert-box">
-                <svg className="alert-svg" viewBox="0 0 100 100">
-                  <path className="triangle-bg" d="M50,15 L90,85 L10,85 Z" />
-                  <path className="triangle-outline" d="M50,15 L90,85 L10,85 Z" />
-                  <path className="triangle-line" d="M50,15 L90,85 L10,85 Z" />
-                  <rect className="alert-mark-bar" x="48" y="35" width="4" height="25" />
-                  <circle className="alert-mark-dot" cx="50" cy="72" r="3" />
-                </svg>
-              </div>
-              <div className="danger-label">DANGER: HIGH</div>
-            </div>
+
           </div>
         </div>
 

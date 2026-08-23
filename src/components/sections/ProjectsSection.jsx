@@ -42,15 +42,15 @@ export default function ProjectsSection({ isActive }) {
 
     const pane = paneRef.current;
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power2.out', force3D: true, clearProps: 'transform,opacity' } });
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out', force3D: true } });
 
-      tl.from(pane, { opacity: 0, x: -16, duration: 0.35 });
-      tl.from('.pane-title',    { y: 16, opacity: 0, duration: 0.3 }, '<0.05');
-      tl.from('.pane-subtitle', { y: 12, opacity: 0, duration: 0.28 }, '<0.06');
-      tl.from('.pane-link-btn', { y: 8,  opacity: 0, stagger: 0.06, duration: 0.24 }, '<0.05');
-      tl.from('.pane-tag',      { scale: 0.78, opacity: 0, stagger: 0.03, duration: 0.2 }, '<0.04');
-      tl.from('.pane-heading',  { opacity: 0, duration: 0.26 }, '<0.08');
-      tl.from('.pane-feature',  { x: -14, opacity: 0, stagger: 0.05, duration: 0.24 }, '<0.04');
+      tl.from(pane, { opacity: 0, x: 56, duration: 0.5, clearProps: 'transform,opacity' });
+      tl.from('.pane-title',    { y: 16, opacity: 0, duration: 0.3, clearProps: 'transform,opacity' }, '<0.08');
+      tl.from('.pane-subtitle', { y: 12, opacity: 0, duration: 0.28, clearProps: 'transform,opacity' }, '<0.06');
+      tl.from('.pane-link-btn', { y: 8,  opacity: 0, stagger: 0.06, duration: 0.24, clearProps: 'transform,opacity' }, '<0.05');
+      tl.from('.pane-tag',      { scale: 0.78, opacity: 0, stagger: 0.03, duration: 0.2, clearProps: 'transform,opacity' }, '<0.04');
+      tl.from('.pane-heading',  { opacity: 0, duration: 0.26, clearProps: 'opacity' }, '<0.08');
+      tl.from('.pane-feature',  { x: 18, opacity: 0, stagger: 0.05, duration: 0.28, clearProps: 'transform,opacity' }, '<0.04');
     }, pane);
 
     return () => ctx.revert();
@@ -121,10 +121,21 @@ export default function ProjectsSection({ isActive }) {
                     )}
                     <div className="strip-content">
                       <div className="strip-left">
-                        <span className="strip-id">
-                          {isClassified ? 'EVIDENCE ///' : `EVIDENCE #${String(projectDetails.findIndex(p => p.slug === project.slug) + 1).padStart(2, '0')}`}
-                        </span>
-                        <h3 className="strip-title">{isClassified ? project.codename : project.title}</h3>
+                        {(!isHovered || isProjActive) ? (
+                          <>
+                            <span className="strip-id">
+                              {isClassified ? 'EVIDENCE ///' : `EVIDENCE #${String(projectDetails.findIndex(p => p.slug === project.slug) + 1).padStart(2, '0')}`}
+                            </span>
+                            <h3 className="strip-title">{isClassified ? project.codename : project.title}</h3>
+                          </>
+                        ) : (
+                          <div className="strip-single-line">
+                            <span className="strip-id-inline">
+                              {isClassified ? 'EVIDENCE ///' : `EVIDENCE #${String(projectDetails.findIndex(p => p.slug === project.slug) + 1).padStart(2, '0')}`}
+                            </span>
+                            <span className="strip-title-inline">{isClassified ? project.codename : project.title}</span>
+                          </div>
+                        )}
                       </div>
                       <div className="strip-right">
                         <span className="strip-tag">

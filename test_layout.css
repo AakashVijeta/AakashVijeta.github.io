@@ -1,0 +1,18 @@
+.projects-layout.is-active .project-bar:not(.is-active) .strip-left {
+  display: block !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+.projects-layout.is-active .project-bar:not(.is-active) .strip-id {
+  display: inline-block !important;
+  margin-right: 12px !important;
+  transform: none !important;
+  vertical-align: middle !important;
+}
+.projects-layout.is-active .project-bar:not(.is-active) .strip-title {
+  display: inline-block !important;
+  font-size: clamp(0.75rem, 1vw, 0.9rem) !important;
+  transform: none !important;
+  vertical-align: middle !important;
+}

@@ -7,6 +7,9 @@
 html {
   /* GSAP owns all scroll — no native smooth scroll */
   scroll-behavior: auto;
+  /* Base 16px on 14" MacBook (~1440px); scales up proportionally on larger monitors.
+     Decreased scaling by 10%: at 2560px → ~17.7px, caps at 20px on ultrawide. */
+  font-size: clamp(16px, calc(10px + 0.3vw), 20px);
 }
 
 body {
