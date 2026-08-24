@@ -4,11 +4,10 @@ import KeyHints from '../KeyHints';
 
 const CORE_PRIMARY = ['Python', 'FastAPI'];
 const CORE_REST = [
-  'React', 'TypeScript',
-  'scikit-learn', 'XGBoost',
-  'PostgreSQL', 'Docker',
-  'Pandas', 'NumPy',
-  'Vite', 'GSAP',
+  'React',
+  'scikit-learn', 
+  'PostgreSQL', 'Pandas', 'NumPy',
+  'GSAP',
   'Node.js', 'SQL',
 ];
 
